@@ -18,8 +18,8 @@ def _():
     import matplotlib.patches as patches
 
 
-   
-    data_path = mo.notebook_location() / "public" / "model.npz"
+    #mo.notebook_location() / "public" / 
+    data_path = "model.npz"
     data = np.load(data_path)
 
     params = {

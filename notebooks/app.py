@@ -18,7 +18,20 @@ def _():
     import matplotlib.patches as patches
 
 
-    #mo.notebook_location() / "public" / 
+    
+    import polars as pl
+    data_path = mo.notebook_location() / "public" / "model.parquet"
+
+    # 1. Load the parquet file
+    df = pl.read_parquet(data_path)
+    
+    # 2. Reconstruct the dictionary with NumPy arrays
+    params = {
+        'anchors': np.array(df['anchors'].to_list()),
+        'mixing_weights': np.array(df['mixing_weights'].to_list()),
+        'L_params': np.array(df['L_params'].to_list())
+    }
+    
     data_path = "model.npz"
     data = np.load(data_path)
 
